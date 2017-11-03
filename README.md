@@ -31,3 +31,9 @@ Simple functions that perform HTTP requests that fails using the `testing.T`
 instance methods upon failure. 
 
 Don't use these in non-test code!
+
+```go
+func Test(t *testing.T) {
+  bytes := requests.Get(t, url)
+}
+```

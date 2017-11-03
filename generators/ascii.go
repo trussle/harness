@@ -3,6 +3,7 @@ package generators
 import (
 	"math/rand"
 	"reflect"
+	"strings"
 )
 
 const asciiChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -43,4 +44,8 @@ func (ASCIISlice) Generate(r *rand.Rand, size int) reflect.Value {
 // Slice returns the underlying slice of the type
 func (a ASCIISlice) Slice() []string {
 	return []string(a)
+}
+
+func (a ASCIISlice) String() string {
+	return strings.Join(a.Slice(), ",")
 }

@@ -1,8 +1,12 @@
 package generators_test
 
-import "testing"
-import "github.com/trussle/harness/generators"
-import "testing/quick"
+import (
+	"strings"
+	"testing"
+	"testing/quick"
+
+	"github.com/trussle/harness/generators"
+)
 
 func TestASCII(t *testing.T) {
 	t.Parallel()
@@ -23,6 +27,15 @@ func TestASCIISlice(t *testing.T) {
 	t.Run("ascii", func(t *testing.T) {
 		fn := func(a generators.ASCIISlice) bool {
 			return validASCIISlice(a.Slice())
+		}
+		if err := quick.Check(fn, nil); err != nil {
+			t.Fatal(err)
+		}
+	})
+
+	t.Run("string", func(t *testing.T) {
+		fn := func(a generators.ASCIISlice) bool {
+			return strings.Join(a.Slice(), ",") == a.String()
 		}
 		if err := quick.Check(fn, nil); err != nil {
 			t.Fatal(err)
