@@ -8,7 +8,8 @@ import (
 
 const asciiChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-func generateString(r *rand.Rand, size int) string {
+// GenerateString creates a random string
+func GenerateString(r *rand.Rand, size int) string {
 	res := make([]byte, size)
 	for k := range res {
 		res[k] = byte(asciiChars[r.Intn(len(asciiChars)-1)])
@@ -21,7 +22,7 @@ type ASCII string
 
 // Generate allows ASCII to be used within quickcheck scenarios.
 func (ASCII) Generate(r *rand.Rand, size int) reflect.Value {
-	return reflect.ValueOf(ASCII(generateString(r, size)))
+	return reflect.ValueOf(ASCII(GenerateString(r, size)))
 }
 
 func (a ASCII) String() string {
@@ -36,7 +37,7 @@ type ASCIISlice []string
 func (ASCIISlice) Generate(r *rand.Rand, size int) reflect.Value {
 	res := make([]string, size)
 	for k := range res {
-		res[k] = generateString(r, size)
+		res[k] = GenerateString(r, size)
 	}
 	return reflect.ValueOf(res)
 }
