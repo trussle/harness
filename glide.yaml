@@ -1,0 +1,3 @@
+package: github.com/trussle/harness
+import:
+  - package: github.com/golang/mock/gomock
