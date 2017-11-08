@@ -1,8 +1,10 @@
-hash: 59685dde6e259fa3ab42b52d55c16d2b5db867fe9c59e3c411ba8814d71afe9b
-updated: 2017-11-08T10:57:55.235258211Z
+hash: cf57e5b881510c1c8e2fa18a830db2844286344f6b6a3b5286b995dd76c5758a
+updated: 2017-11-08T14:45:18.320687656Z
 imports:
 - name: github.com/golang/mock
   version: 13f360950a79f5864a972c786a10a50e44b69541
   subpackages:
   - gomock
+- name: github.com/trussle/uuid
+  version: 23bc856a10519000ea4c17b77520ab48c3d3bbfd
 testImports: []
